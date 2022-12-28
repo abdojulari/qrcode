@@ -1,0 +1,14 @@
+<div class="flex mx-20 ">
+    <div *ngFor="let detail of details"  class="w-72 p-2">
+    <img [src]="detail.value" [alt]="" class="w-72 h-48" />
+    <div class="flex justify-between bg-blue-900 mt-1 text-white p-1">
+        <span class="w-1/2 px-3">{{ detail.title }}</span>
+        <ngx-qrcode class="w-28"
+        [elementType]="detail.elementType" 
+        [value]="detail.value"
+        cssClass="aclass"
+        [errorCorrectionLevel]="detail.correctionLevel">
+        </ngx-qrcode>
+    </div>
+    </div>
+</div>

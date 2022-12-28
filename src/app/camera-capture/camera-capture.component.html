@@ -1,0 +1,48 @@
+<section class="w-96 p-4 m-10">
+    <div class="p-1 border border-blue-800">
+        <ngx-scanner-qrcode 
+            #action="scanner"
+            [config]="config" 
+            (event)="onEvent($event)" 
+            (error)="onError($event)"
+        >
+        </ngx-scanner-qrcode>
+    </div>
+ 
+    <!-- data  -->
+    <span  >
+        {{ (action.data.value)['data'] }}
+    </span><!-- value -->
+    <!-- Loading -->
+    <p *ngIf="action.isLoading">⌛ Loading...</p>
+    
+    <!-- start -->
+    <div class="flex justify-between">
+        <button 
+        class="mt-5 bg-blue-100 w-10 h-10 p-2
+        text-white rounded-full border-blue-800 border" 
+        [disabled]="action.isLoading">
+            <img 
+            class="w-6"
+            *ngIf="!action.isStart" 
+            (click)="handle(action, 'start')" 
+            [src]="'https://img.icons8.com/ios/50/000000/no-camera--v2.png'" 
+            [alt]="''"
+            />
+            
+            <img 
+            *ngIf="action.isStart" 
+            (click)="handle(action, 'stop')" 
+            [src]="'https://img.icons8.com/ios/50/000000/no-camera--v1.png'" 
+            [alt]="''"
+            />
+        </button>
+        <button 
+        class="mt-5 bg-blue-100 w-24 h-10 p-2
+        text-blue-800 rounded-sm border-blue-800 border" 
+        [disabled]="action.isLoading" 
+        (click)="action.download('ngx-scanner-qrcode')">
+        Download
+        </button>
+    </div>
+</section>

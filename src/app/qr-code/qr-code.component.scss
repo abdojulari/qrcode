@@ -1,0 +1,14 @@
+.hide {
+    display: none;
+  }
+
+  img:hover + .hide {
+    display: flex;
+  }
+
+.hide {
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+  
+  
